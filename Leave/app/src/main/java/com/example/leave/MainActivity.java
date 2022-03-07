@@ -32,6 +32,7 @@ public class MainActivity extends Activity {
         if (savedInstanceState != null &&
                 savedInstanceState.containsKey("count")) {
             count = savedInstanceState.getInt("count");
+             Toast.makeText(this, "onRestoreInstanceState()", Toast.LENGTH_LONG).show();
         }
         Log.d(TAG, "onRestoreInstanceState");
         // Восстановление состояние UI из объекта savedInstanceState.
@@ -41,6 +42,7 @@ public class MainActivity extends Activity {
     @Override
     public void onRestart(){
         super.onRestart();
+        Toast.makeText(this, "onRestart()", Toast.LENGTH_LONG).show();
         Log.d(TAG, "onRestart");
         // Восстановить состояние UI с учетом того,
         // что данная Активность уже была видимой.
@@ -49,6 +51,7 @@ public class MainActivity extends Activity {
     @Override
     public void onStart(){
         super.onStart();
+        Toast.makeText(this, "onStart()", Toast.LENGTH_LONG).show();
         Log.d(TAG, "onStart");
         resetUI();
         // Проделать необходимые действия для
@@ -60,6 +63,7 @@ public class MainActivity extends Activity {
     @Override
     public void onResume(){
         super.onResume();
+        Toast.makeText(this, "onResume()", Toast.LENGTH_LONG).show();
         Log.d(TAG, "onResume");
         // Восстановить приостановленные обновления UI,
         // потоки и процессы, замороженные, когда
@@ -73,6 +77,7 @@ public class MainActivity extends Activity {
         // передан методам onCreate и onRestoreInstanceState
         super.onSaveInstanceState(savedInstanceState);
         outState.putInt("count", count);
+        Toast.makeText(this, "onSaveInstanceState()", Toast.LENGTH_LONG).show();
         Log.d(TAG, "onSaveInstanceState");
     }
     // Вызывается перед выходом из активного состояния
@@ -82,6 +87,7 @@ public class MainActivity extends Activity {
         // «трудоемкие» процессы, не нужные, когда Активность
         // не на переднем плане
         super.onPause();
+        Toast.makeText(this, "onPause()", Toast.LENGTH_LONG).show();
         Log.d(TAG, "onPause");
     }
     // Вызывается перед выходом из видимого состояния
@@ -93,6 +99,7 @@ public class MainActivity extends Activity {
         // Сохранить все данные и изменения в UI, так как
         // процесс может быть в любой момент убит системой
         super.onStop();
+        Toast.makeText(this, "onStop()", Toast.LENGTH_LONG).show();
         Log.d(TAG, "onStop");
     }
     // Вызывается перед уничтожением активности
@@ -101,11 +108,13 @@ public class MainActivity extends Activity {
         // Освободить все ресурсы, включая работающие потоки,
         // соединения с БД и т. д.
         super.onDestroy();
+        Toast.makeText(this, "onDestroy()", Toast.LENGTH_LONG).show();
         Log.d(TAG, "onDestroy");
     }
 
     private void resetUI() {
         ((TextView) findViewById(R.id.txt_counter)).setText(count.toString());
+        Toast.makeText(this, "resetUI()", Toast.LENGTH_LONG).show();
         Log.d(TAG, "resetUI");
     }
 }
